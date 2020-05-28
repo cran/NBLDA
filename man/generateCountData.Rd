@@ -4,8 +4,8 @@
 \alias{generateCountData}
 \title{Generate Count Data}
 \usage{
-generateCountData(n, p, K, param, sdsignal = 1, DE = 0.3,
-  allZero.rm = TRUE, tag.samples = FALSE)
+generateCountData(n, p, K, param, sdsignal = 1, DE = 0.3, allZero.rm = TRUE,
+  tag.samples = FALSE)
 }
 \arguments{
 \item{n}{number of samples.}

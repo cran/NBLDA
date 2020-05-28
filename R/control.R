@@ -2,6 +2,12 @@
 #'
 #' @description Define control parameters to be used within \code{\link{trainNBLDA}} function.
 #'
+#' @usage
+#' nbldaControl(folds = 5, repeats = 2, foldIdx = NULL, rhos = NULL,
+#'   beta = 1, prior = NULL, transform = FALSE, alpha = NULL, truephi = NULL,
+#'   target = 0, phi.epsilon = 0.15, normalize.target = FALSE, delta = NULL,
+#'   multicore = FALSE, ...)
+#'
 #' @param folds A positive integer. The number of folds for k-fold model validation.
 #' @param repeats A positive integer. This is the number of repeats for k-fold model validation. If NULL, 0 or negative, it is set to 1.
 #' @param foldIdx a list with indices of hold-out samples for each fold. It should be a list where folds are nested within repeats.

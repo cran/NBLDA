@@ -55,7 +55,7 @@ NullModel <- function(x, type = c("mle", "deseq", "quantile", "none", "tmm")){
     sizes <- apply(counts, 2, function(cnts) median((cnts/geomeans)[geomeans > 0]))
     rawsizestr <- sizes  ## This part will be used to normalize test samples using train sample information.
     sizes <- sizes/sum(sizes)  # size factors for each sample
-    fit <- outer(sizes, colsum, "*")   # s.i * g.j  eşitliği.
+    fit <- outer(sizes, colsum, "*")   # s.i * g.j
     return(list(n = fit, sizes = sizes, geomeans = geomeans, rawsizestr = rawsizestr,
                 lib.size = rowsum, gene.length = colsum, type = type))
 

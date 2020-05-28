@@ -44,6 +44,8 @@
 #'
 #' @importFrom stats predict
 #' @method predict nblda
+#'
+#' @export
 predict.nblda <- function(object, test.data, return = c("predictions", "everything"), ...){
   ## Args:
   ##  object: an object returned form trainNBLDA.

@@ -5,9 +5,9 @@
 \title{Control parameters for trained NBLDA model.}
 \usage{
 nbldaControl(folds = 5, repeats = 2, foldIdx = NULL, rhos = NULL,
-  beta = 1, prior = NULL, transform = FALSE, alpha = NULL,
-  truephi = NULL, target = 0, phi.epsilon = 0.15,
-  normalize.target = FALSE, delta = NULL, multicore = FALSE, ...)
+  beta = 1, prior = NULL, transform = FALSE, alpha = NULL, truephi = NULL,
+  target = 0, phi.epsilon = 0.15, normalize.target = FALSE, delta = NULL,
+  multicore = FALSE, ...)
 }
 \arguments{
 \item{folds}{A positive integer. The number of folds for k-fold model validation.}

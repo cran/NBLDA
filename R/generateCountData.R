@@ -2,6 +2,10 @@
 #'
 #' @description This function can be used to generate counts, e.g RNA-Sequencing data, for both classification and clustering purposes.
 #'
+#' @usage
+#' generateCountData(n, p, K, param, sdsignal = 1, DE = 0.3, allZero.rm = TRUE,
+#'   tag.samples = FALSE)
+#'
 #' @param n number of samples.
 #' @param p number of variables/features.
 #' @param K number of classes.
@@ -32,7 +36,7 @@
 #' @importFrom stats rexp rnorm rnbinom runif sd var
 #'
 #' @export
-generateCountData <- function (n, p, K, param, sdsignal = 1, DE = 0.3, allZero.rm = TRUE, tag.samples = FALSE) {
+generateCountData <- function(n, p, K, param, sdsignal = 1, DE = 0.3, allZero.rm = TRUE, tag.samples = FALSE) {
   # Args:
   #   n: number of samples
   #   p: number of features

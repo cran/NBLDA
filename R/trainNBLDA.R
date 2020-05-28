@@ -177,6 +177,10 @@ nblda <- function(x, y, xte = NULL, rhos = 0, beta = 1, type = c("mle", "deseq",
 #' @description This function fits Negative Binomial classifier using various model parameters and finds the best model parameter
 #' using the resampling based performance measures.
 #'
+#' @usage
+#' trainNBLDA(x, y, type = c("mle", "deseq", "quantile", "tmm"),
+#'   tuneLength = 10, metric = c("accuracy", "error"), train.control = nbldaControl(), ...)
+#'
 #' @param x a n-by-p data frame or matrix. Samples should be in the rows and variables in the columns. Used to train the classifier.
 #' @param y a vector of length n. Each element corresponds to a class label of a sample. Integer and/or factor types are allowed.
 #' @param type a character string indicating the type of normalization method within the NBLDA model. See details.
@@ -234,7 +238,6 @@ nblda <- function(x, y, xte = NULL, rhos = 0, beta = 1, type = c("mle", "deseq",
 #' @name trainNBLDA
 #' @rdname trainNBLDA
 #'
-#' @importFrom sSeq getT getAdjustDisp rowVars
 #' @importFrom methods new
 #'
 #' @export

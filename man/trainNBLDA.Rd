@@ -5,8 +5,7 @@
 \title{Train Model over Different Tuning Parameters}
 \usage{
 trainNBLDA(x, y, type = c("mle", "deseq", "quantile", "tmm"),
-  tuneLength = 10, metric = c("accuracy", "error"),
-  train.control = nbldaControl(), ...)
+  tuneLength = 10, metric = c("accuracy", "error"), train.control = nbldaControl(), ...)
 }
 \arguments{
 \item{x}{a n-by-p data frame or matrix. Samples should be in the rows and variables in the columns. Used to train the classifier.}
