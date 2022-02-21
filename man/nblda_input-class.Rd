@@ -5,15 +5,14 @@
 \alias{nblda_input-class}
 \title{\code{nblda_input} object}
 \description{
-This object is the subclass for NBLDA package. It stores input objects, i.e. count data and class labels.
+This object is the subclass for the NBLDA package. It stores input objects, i.e., count data and class labels.
 }
 \section{Slots}{
 
 
 \describe{
-  \item{\code{x}:}{a data.frame or matrix. Count data input for NBLDA classifier.}
-  \item{\code{y}:}{a vector of length equal to number of rows of x. This is the class labels of each subject.
-  Should be either a numeric vector or factor.}
+  \item{\code{x}:}{a data.frame or matrix containing the count data input for the NBLDA classifier.}
+  \item{\code{y}:}{a vector of length equal to the number of rows of x. This is the class label of each subject. Should be either a numeric vector or factor.}
 }
 }
 

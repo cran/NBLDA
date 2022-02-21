@@ -1,16 +1,15 @@
-#' @title Calculate Normalized Counts and Related Training Parameters.
+#' @title Calculate the Normalized Counts and Related Training Parameters.
 #'
-#' @description Fit training set to NBLDA model and estimate normalized counts. The related model parameters which are used
-#' while normalizing training sets are also returned in order to normalize test sets using training set parameters.
+#' @description Fit a training set to the NBLDA model and estimate normalized counts. The related model parameters, which are used while normalizing training sets, are also returned to normalize test sets using training set parameters.
 #'
-#' @param x a n-by-p data frame or matrix of count data. Samples should be in the rows.
-#' @param type normalization methods. See \code{\link{control}} for details.
+#' @param x an n-by-p data frame or matrix of count data. Samples should be in the rows.
+#' @param type the normalization method. See \code{\link{control}} for details.
 #'
-#' @return a list with normalized counts and training set parameters used for normalizing raw counts.
+#' @return a list with the normalized counts and the training set parameters that are used for normalizing the raw counts.
 #'
 #' @author Dincer Goksuluk
 #'
-#' @note These functions are copied from \code{PoiClaClu} package and modified here to make "tmm" and "none" methods available.
+#' @note These functions are copied from the \code{PoiClaClu} package and modified here to make "tmm" and "none" methods available.
 #'
 #' @examples
 #' set.seed(2128)
@@ -83,7 +82,7 @@ NullModel <- function(x, type = c("mle", "deseq", "quantile", "none", "tmm")){
 
 
 #' @param null.out an object returned from \code{\link{NullModel}}.
-#' @param xte a n-by-p count matrix or data frame of test set. These counts are normalized using training set parameters.
+#' @param xte an n-by-p count matrix or data frame of test set. These counts are normalized using the training set parameters.
 #'
 #' @rdname NullModel
 #'

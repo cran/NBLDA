@@ -5,14 +5,14 @@
 \alias{nblda_trained-class}
 \title{\code{nblda_trained} object}
 \description{
-This object is the subclass for NBLDA package. It stores cross-validated results and the final model.
+This object is the subclass for the NBLDA package. It stores the cross-validated results and the final model.
 }
 \section{Slots}{
 
 
 \describe{
   \item{\code{crossValidated}:}{a list. Returns the results from cross-validation.}
-  \item{\code{finalModel}:}{a list with elements from final model using optimum model parameters from cross-validated model.}
+  \item{\code{finalModel}:}{a list with the elements from the final model that is fitted using optimum model parameters from the cross-validated model.}
   \item{\code{control}:}{a list with controlling parameters for fitting NBLDA classifier.}
 }
 }

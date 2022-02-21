@@ -3,13 +3,12 @@
 #'
 #' @description  This function is used to generate model performance plots using \code{\link[ggplot2:ggplot]{ggplot2}} functions.
 #'
-#' @param x a \code{nblda} object returned from \code{\link{trainNBLDA}} or \code{nblda_trained} object returned from \code{\link{nbldaTrained}}.
+#' @param x a \code{nblda} object returned from the \code{\link{trainNBLDA}} or \code{nblda_trained} object returned from the \code{\link{nbldaTrained}}.
 #' @param y same as \code{x} and not required to be defined. If \code{x} is missing or NULL, \code{nblda} or \code{nblda_trained} object is imported from \code{y}.
-#' @param theme pre-defined plot themes. It can be defined outside \code{plot} function using ggplot's library. See examples.
+#' @param theme pre-defined plot themes. It can be defined outside \code{plot} function using the ggplot's library. See examples.
 #' @param ... further arguments to be passed to plotting function \code{\link[ggplot2]{ggplot}}.
-#' @param metric which metric should be used in y-axis?
-#' @param return should complete plot or a ggplot object from \code{ggplot} be returned? One may select "aes" in order to add plot layers
-#' to returned ggplot aesthetics. See examples.
+#' @param metric which metric should be used in the y-axis?
+#' @param return should a complete plot or a ggplot object from \code{ggplot} be returned? One may select "aes" in order to add plot layers to a returned ggplot aesthetics. See examples.
 #'
 #' @return A list of class \code{ggplot}.
 #'

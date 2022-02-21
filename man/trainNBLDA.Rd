@@ -14,11 +14,11 @@ trainNBLDA(x, y, type = c("mle", "deseq", "quantile", "tmm"),
 
 \item{type}{a character string indicating the type of normalization method within the NBLDA model. See details.}
 
-\item{tuneLength}{a positive integer. This is the total number of levels to be used while tuning the model parameter(s).}
+\item{tuneLength}{a positive integer. This is the total number of levels to be used while tuning the model parameter(s) in grid search.}
 
-\item{metric}{which criteria should be used while determining the best parameter? overall accuracu or avarage number of misclassified samples?}
+\item{metric}{which criteria should be used while determining the best model parameter? overall accuracy or average number of misclassified samples?}
 
-\item{train.control}{a list with control parameters to be used in NBLDA model. See \link{nbldaControl} for details.}
+\item{train.control}{a list with control parameters to be used in the NBLDA model. See \link{nbldaControl} for details.}
 
 \item{...}{further arguments. Deprecated.}
 }
@@ -29,19 +29,10 @@ an \code{nblda} object with following slots:
 \item{call}{a call expression.}
 }
 \description{
-This function fits Negative Binomial classifier using various model parameters and finds the best model parameter
-using the resampling based performance measures.
+This function fits the Negative Binomial classifier using various model parameters and finds the best model parameter using the resampling based performance measures.
 }
 \details{
-NBLDA is proposed to classify count data from any field, e.g. economics, social sciences, genomics, etc.
-In RNA-Seq studies, for example, normalization is used to adjust between-sample differences for downstream analysis.
-\code{type} is used to define normalization method. Available options are "mle", "deseq", "quantile" and "tmm".
-Since "deseq", "quantile" and "tmm" methods are originally proposed as robust methods to be used in RNA-Sequencing studies, one should
-carefully define normalization types. In greater details, "deseq" estimates the size factors by dividing each sample by the geometric means
-of the transcript counts (Anders and Huber, 2010). "tmm" trims the lower and upper side of the data by log fold changes to
-minimize the log-fold changes between the samples and by absolute intensity (Robinson and Oshlack, 2010). "quantile" is
-quantile normalization approach of Bullard et al (2010). "mle" (less robust) divides total counts of each sample to the grand total
-counts (Witten, 2010). See related papers for mathematical backgrounds.
+NBLDA is proposed to classify count data from any field, e.g., economics, social sciences, genomics, etc. In RNA-Seq studies, for example, normalization is used to adjust between-sample differences for downstream analysis. \code{type} is used to define normalization method. Available options are "mle", "deseq", "quantile", and "tmm". Since "deseq", "quantile", and "tmm" methods are originally proposed as robust methods to be used in RNA-Sequencing studies, one should carefully define normalization types. In greater detail, "deseq" estimates the size factors by dividing each sample by the geometric means of the transcript counts (Anders and Huber, 2010). "tmm" trims the lower and upper side of the data by log-fold changes to minimize the log-fold changes between the samples and by absolute intensity (Robinson and Oshlack, 2010). "quantile" is quantile normalization approach of Bullard et al. (2010). "mle" (less robust) divides total counts of each sample to the total counts (Witten, 2010). See related papers for mathematical backgrounds.
 }
 \examples{
 set.seed(2128)
@@ -60,19 +51,15 @@ nbldaTrained(fit)  # Cross-validated model summary.
 
 }
 \references{
-Witten, DM (2011). Classification and clustering of sequencing data using a Poisson model.
-Ann. Appl. Stat. 5(4), 2493--2518. doi:10.1214/11-AOAS493.
+Witten, DM (2011). Classification and clustering of sequencing data using a Poisson model. Ann. Appl. Stat. 5(4), 2493--2518. doi:10.1214/11-AOAS493.
 
-Dong, K., Zhao, H., Tong, T., & Wan, X. (2016). NBLDA: negative binomial linear discriminant analysis for RNA-Seq data.
-BMC Bioinformatics, 17(1), 369. http://doi.org/10.1186/s12859-016-1208-1.
+Dong, K., Zhao, H., Tong, T., & Wan, X. (2016). NBLDA: negative binomial linear discriminant analysis for RNA-Seq data. BMC Bioinformatics, 17(1), 369. http://doi.org/10.1186/s12859-016-1208-1.
 
 Anders S. Huber W. (2010). Differential expression analysis for sequence count data. Genome Biology, 11:R106
 
-Witten D. et al. (2010) Ultra-high throughput sequencing-based small RNA discovery and discrete statistical biomarker analysis
-in a collection of cervical tumours and matched controls. BMC Biology, 8:58
+Witten D. et al. (2010) Ultra-high throughput sequencing-based small RNA discovery and discrete statistical biomarker analysis in a collection of cervical tumours and matched controls. BMC Biology, 8:58
 
-Robinson MD, Oshlack A (2010). A scaling normalization method for differential expression analysis of RNA-Seq data.
-Genome Biology, 11:R25, doi:10.1186/gb-2010-11-3-r25
+Robinson MD, Oshlack A (2010). A scaling normalization method for differential expression analysis of RNA-Seq data. Genome Biology, 11:R25, doi:10.1186/gb-2010-11-3-r25
 }
 \author{
 Dincer Goksuluk

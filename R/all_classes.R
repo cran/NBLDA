@@ -2,13 +2,13 @@
 ###### 1. SubClass: nblda_trained  #######
 #' @title \code{nblda_trained} object
 #'
-#' @description This object is the subclass for NBLDA package. It stores cross-validated results and the final model.
+#' @description This object is the subclass for the NBLDA package. It stores the cross-validated results and the final model.
 #'
 #' @section Slots:
 #'
 #' \describe{
 #'   \item{\code{crossValidated}:}{a list. Returns the results from cross-validation.}
-#'   \item{\code{finalModel}:}{a list with elements from final model using optimum model parameters from cross-validated model.}
+#'   \item{\code{finalModel}:}{a list with the elements from the final model that is fitted using optimum model parameters from the cross-validated model.}
 #'   \item{\code{control}:}{a list with controlling parameters for fitting NBLDA classifier.}
 #' }
 #'
@@ -28,14 +28,13 @@ setClassUnion("class.labels", c("numeric", "integer", "factor"))
 
 #' @title \code{nblda_input} object
 #'
-#' @description This object is the subclass for NBLDA package. It stores input objects, i.e. count data and class labels.
+#' @description This object is the subclass for the NBLDA package. It stores input objects, i.e., count data and class labels.
 #'
 #' @section Slots:
 #'
 #' \describe{
-#'   \item{\code{x}:}{a data.frame or matrix. Count data input for NBLDA classifier.}
-#'   \item{\code{y}:}{a vector of length equal to number of rows of x. This is the class labels of each subject.
-#'   Should be either a numeric vector or factor.}
+#'   \item{\code{x}:}{a data.frame or matrix containing the count data input for the NBLDA classifier.}
+#'   \item{\code{y}:}{a vector of length equal to the number of rows of x. This is the class label of each subject. Should be either a numeric vector or factor.}
 #' }
 #'
 #' @author Dincer Goksuluk
@@ -50,17 +49,15 @@ setClass("nblda_input", slots = c(x = "count.data", y = "class.labels"))
 ###### 3. Class: nblda #####
 #' @title \code{nblda} object
 #'
-#' @description This object is the main class for NBLDA package. It stores inputs, results and call info for the trained model.
+#' @description This object is the main class for the NBLDA package. It stores inputs, results, and call info for the trained model.
 #'
-#' @details Objects can be created by calls of the form \code{new("nblda", ...)}. This type
-#' of objects is created as a result of \code{trainNBLDA} function of \code{NBLDA} package.
-#' It is then used in \code{predict} function for predicting class labels of new samples.
+#' @details Objects can be created by calls of the form \code{new("nblda", ...)}. This type of object is returned from \code{trainNBLDA} function of the \code{NBLDA} package. It is then used in \code{predict} function for predicting class labels of new samples.
 #'
 #' @section Slots:
 #'
 #' \describe{
 #'   \item{\code{input}:}{an \code{nblda_input} object including the count matrix (or data.frame) and class labels.}
-#'   \item{\code{result}:}{an \code{nblda_trained} object with elements from corss-validated and final models.}
+#'   \item{\code{result}:}{an \code{nblda_trained} object with elements from the cross-validated and final models.}
 #'   \item{\code{call}:}{a call expression.}
 #' }
 #'
@@ -79,7 +76,7 @@ setClass("nblda",
                    call = "call"))
 
 # setValidity("discrete.train", function(object){
-#   TRUE    ##### SLOTLARIN VALIDITY'SI YAPILACAK.
+#   TRUE    ##### Slots MUST BE validated
 # })
 
 

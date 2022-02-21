@@ -5,14 +5,13 @@
 \alias{cervical}
 \title{Cervical cancer data}
 \format{
-A data frame with 58 observations and 715 variables.
+A data frame with 58 observations and 715 variables (including the class labels).
 }
 \source{
-\url{http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2880020/#supplementary-material-sec}
+\url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2880020/}
 }
 \description{
-Cervical cancer data measures the expressions of 714 miRNAs of human samples. There are 29 tumor and 29 non-tumor cervical
-samples and these two groups are treated as two separete classes.
+Cervical cancer data measures the gene expression levels of 714 miRNAs of human samples. There are 29 tumor and 29 non-tumor cervical samples, and these two groups correspond to two separate classes.
 }
 \examples{
 \dontrun{
@@ -20,8 +19,7 @@ data(cervical)
 }
 }
 \references{
-Witten, D., et al. (2010) Ultra-high throughput sequencing-based small RNA discovery and discrete statistical biomarker
-analysis in a collection of cervical tumours and matched controls. BMC Biology, 8:58
+Witten, D., et al. (2010) Ultra-high throughput sequencing-based small RNA discovery and discrete statistical biomarker analysis in a collection of cervical tumours and matched controls. BMC Biology, 8:58
 }
 \keyword{cervical}
 \keyword{data}

@@ -9,28 +9,25 @@ getShrinkedDispersions(obs, shrinkTarget = NULL, delta = NULL)
 \arguments{
 \item{obs}{a numeric vector. Initial dispersion estimates for each feature.}
 
-\item{shrinkTarget}{a numeric value. initial dispersion estimates are shrinked towards
-this value. If NULL, target value is estimated from initial dispersion estimates. See notes.}
+\item{shrinkTarget}{a numeric value. Initial dispersion estimates are shrunk towards this value. If NULL, target value is estimated from the initial dispersion estimates. See notes.}
 
-\item{delta}{a numeric value. This is the weight that is used for shrinkage algorithm. If 0,
-no shrinkage is performed on intiial values. If equals 1, initial values are forced to shrinked
-to target value. If NULL, weight are automatically estimated from initial disperson estimates.}
+\item{delta}{a numeric value. This is the weight that is used within the shrinkage algorithm. If 0, no shrinkage is performed on initial values. If equals 1, initial values are forced to be shrunken to the target value. If NULL, weights are automatically estimated from the initial dispersion estimates.}
 }
 \value{
-a list with elements of initial and adjusted (shrinked) dispersion estimates, shrinkage target and
-weight that is used to shrink towards target value. See related paper for detailed information on shrinkage
-algorithm (Yu et. al., 2013).
-\item{initial}{initial estimates for dispersions estimated from method-of-momnets.}
-\item{adj}{shrinked dispersion estimates.}
-\item{cmp}{mean and variance of initial estimates.}
-\item{delta}{a weight used for shrinkage estimates. See Yu et. al. (2013) for details.}
+a list with the elements of initial and adjusted (shrunken) dispersion estimates, shrinkage target, and
+weights that are used to shrink towards the target value. See the related paper for detailed information on shrinkage
+algorithm (Yu et al., 2013).
+\item{initial}{initial dispersion estimates using the method-of-moments.}
+\item{adj}{shrunken dispersion estimates.}
+\item{cmp}{the means and variances of initial estimates.}
+\item{delta}{a weight used for shrinkage estimates. See Yu et al. (2013) for details.}
 \item{target}{shrinkage target for initial dispersion estimates.}
 }
 \description{
 Use this function to shrink initial estimates of overdispersions towards a target value.
 }
 \note{
-This function is modified using source code from \code{\link[sSeq]{getAdjustDisp}}.
+This function is modified from the source codes of \code{\link[sSeq]{getAdjustDisp}} function in the \bold{sSeq} Bioconductor package.
 }
 \examples{
 set.seed(2128)

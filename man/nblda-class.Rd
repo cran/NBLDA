@@ -5,19 +5,17 @@
 \alias{nblda-class}
 \title{\code{nblda} object}
 \description{
-This object is the main class for NBLDA package. It stores inputs, results and call info for the trained model.
+This object is the main class for the NBLDA package. It stores inputs, results, and call info for the trained model.
 }
 \details{
-Objects can be created by calls of the form \code{new("nblda", ...)}. This type
-of objects is created as a result of \code{trainNBLDA} function of \code{NBLDA} package.
-It is then used in \code{predict} function for predicting class labels of new samples.
+Objects can be created by calls of the form \code{new("nblda", ...)}. This type of object is returned from \code{trainNBLDA} function of the \code{NBLDA} package. It is then used in \code{predict} function for predicting class labels of new samples.
 }
 \section{Slots}{
 
 
 \describe{
   \item{\code{input}:}{an \code{nblda_input} object including the count matrix (or data.frame) and class labels.}
-  \item{\code{result}:}{an \code{nblda_trained} object with elements from corss-validated and final models.}
+  \item{\code{result}:}{an \code{nblda_trained} object with elements from the cross-validated and final models.}
   \item{\code{call}:}{a call expression.}
 }
 }

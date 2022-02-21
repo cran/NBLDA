@@ -11,17 +11,17 @@
 \S4method{predict}{nblda}(object, test.data, return = c("predictions", "everything"), ...)
 }
 \arguments{
-\item{object}{a \code{nblda} object returned from \code{\link{trainNBLDA}}.}
+\item{object}{a \code{nblda} object returned from the \code{\link{trainNBLDA}}.}
 
 \item{test.data}{a data frame or matrix whose class labels to be predicted.}
 
-\item{return}{what should be returned? Predicted class labels or eveything?}
+\item{return}{what should be returned? Predicted class labels or everything?}
 
 \item{\dots}{further arguments to be passed to or from methods.}
 }
 \value{
 It is possible to return only predicted class labels or a list with elements which are used within prediction
-process. These arguements are as follows:
+process. These arguments are as follows:
 \item{xte}{count data for test set.}
 \item{nste}{normalized count data for test set.}
 \item{ds}{estimates of offset parameter for each variable. See notes.}
@@ -33,7 +33,7 @@ process. These arguements are as follows:
 \item{dispersions}{dispersion estimates of each variable.}
 }
 \description{
-This function predicts the class labels of test data for a given model.
+This function predicts the class labels of a test data for a given model.
 }
 \note{
 \code{d_kj} is simply used to re-parameterize the Negative Binomial mean as s_i*g_j*d_kj where s_i is the size

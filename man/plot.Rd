@@ -45,18 +45,17 @@
 )
 }
 \arguments{
-\item{x}{a \code{nblda} object returned from \code{\link{trainNBLDA}} or \code{nblda_trained} object returned from \code{\link{nbldaTrained}}.}
+\item{x}{a \code{nblda} object returned from the \code{\link{trainNBLDA}} or \code{nblda_trained} object returned from the \code{\link{nbldaTrained}}.}
 
 \item{y}{same as \code{x} and not required to be defined. If \code{x} is missing or NULL, \code{nblda} or \code{nblda_trained} object is imported from \code{y}.}
 
 \item{...}{further arguments to be passed to plotting function \code{\link[ggplot2]{ggplot}}.}
 
-\item{theme}{pre-defined plot themes. It can be defined outside \code{plot} function using ggplot's library. See examples.}
+\item{theme}{pre-defined plot themes. It can be defined outside \code{plot} function using the ggplot's library. See examples.}
 
-\item{metric}{which metric should be used in y-axis?}
+\item{metric}{which metric should be used in the y-axis?}
 
-\item{return}{should complete plot or a ggplot object from \code{ggplot} be returned? One may select "aes" in order to add plot layers
-to returned ggplot aesthetics. See examples.}
+\item{return}{should a complete plot or a ggplot object from \code{ggplot} be returned? One may select "aes" in order to add plot layers to a returned ggplot aesthetics. See examples.}
 }
 \value{
 A list of class \code{ggplot}.

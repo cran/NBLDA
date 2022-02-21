@@ -10,46 +10,27 @@
 #'
 #' @param folds A positive integer. The number of folds for k-fold model validation.
 #' @param repeats A positive integer. This is the number of repeats for k-fold model validation. If NULL, 0 or negative, it is set to 1.
-#' @param foldIdx a list with indices of hold-out samples for each fold. It should be a list where folds are nested within repeats.
-#' If NULL, \code{folds} and \code{repeats} are used to define hold-out samples.
-#' @param rhos A vector of tuning parameters that control the amount of soft thresholding performed. If NULL, it is automatically generated within
-#' \code{\link{trainNBLDA}} using \code{tuneLength}, i.e. the length of grid search. See details.
-#' @param beta A smoothing term. A Gamma(beta,beta) prior is used to fit the Poisson model. Recommendation is to just leave it at 1, the default value.
-#' See Witten (2011) and Dong et. al. (2016) for details.
-#' @param prior A vector of length equal to the number of classes indicating the prior class probabilities. If NULL, all classes are assumed to be
-#' equally distributed.
-#' @param transform a logical. If TRUE, count data is transformed using power transformation. If \code{alpha} is not specified the power transformation
-#' parameter is automatically calculated using goodness-of-fit test. See Witten (2011) for details.
+#' @param foldIdx a list with indices of hold-out samples for each fold. It should be a list where folds are nested within repeats. If NULL, \code{folds} and \code{repeats} are used to define hold-out samples.
+#' @param rhos A vector of tuning parameters that control the amount of soft thresholding performed. If NULL, it is automatically generated within \code{\link{trainNBLDA}} using \code{tuneLength}, i.e., the length of grid search. See details.
+#' @param beta A smoothing term. A Gamma(beta,beta) prior is used to fit the Poisson model. Recommendation is to just leave it at 1, the default value. See Witten (2011) and Dong et al. (2016) for details.
+#' @param prior A vector with a length equal to the number of classes indicates the prior class probabilities. If NULL, all classes are assumed to be equally distributed.
+#' @param transform a logical. If TRUE, count data is transformed using power transformation. If \code{alpha} is not specified the power transformation parameter is automatically calculated using a goodness-of-fit test. See Witten (2011) for details.
 #' @param alpha a numeric value within [0, 1] to be used for power transformation.
-#' @param truephi a vector of length equal to the number of variables representing the true overdispersion parameters for each variable. If a single
-#' value is given, it is replicated for all variables. If a vector of length unequal to the number of variables is given, the first element of this
-#' vector is used and replicated for all variables. If NULL, estimated overdispersions are used in the classifier. See details.
-#' @param target a value for the shrinkage target of dispersion estimates. If target is NULL, then then a value that is small and minimizes the
-#' average squared difference is automatically used as the target value. See \code{\link[sSeq]{getT}} for details.
+#' @param truephi a vector with a length equal to the number of variables.  Its elements represent the true overdispersion parameters for each variable. If a single value is given, it is recycled for all variables. If a vector whose length is not equal to the number of variables given, the first element of this vector is used and recycled for all variables. If NULL, estimated overdispersions are used in the classifier. See details.
+#' @param target a value for the shrinkage target of dispersion estimates. If NULL, then then a value that is small and minimizes the average squared difference is automatically used as the target value. See \code{\link[sSeq]{getT}} for details.
 #' @param phi.epsilon a positive value for controlling the number of features whose dispersions are shrinked towards 0. See details.
-#' @param normalize.target a logical. If TRUE and \code{target} is NULL, the target value is estimated using normalized dispersion estimates.
-#' See \code{\link[sSeq]{getT}} for details.
-#' @param delta a weight within the interval [0, 1] that is used while shrinking dispersions towards 0. When "delta = 0", initial dispersion estimates
-#' are forced to be shrinked to 1. Similarly, if "delta = 0", no shrinkage is performed on initial estimates.
-#' @param multicore a logical. If a parallel backend is loaded and available, the function runs in parallel CPUs.
-#' @param ... further arguements passed to \code{\link{trainNBLDA}}.
+#' @param normalize.target a logical. If TRUE and \code{target} is NULL, the target value is estimated using the normalized dispersion estimates. See \code{\link[sSeq]{getT}} for details.
+#' @param delta a weight within the interval [0, 1] that is used while shrinking dispersions towards 0. When "delta = 0", initial dispersion estimates are forced to be shrunk to 1. Similarly, if "delta = 0", no shrinkage is performed on the initial estimates.
+#' @param multicore a logical. If a parallel backend is loaded and available, the function runs in parallel setting for speeding up the computations.
+#' @param ... further arguments passed to \code{\link{trainNBLDA}}.
 #'
 #' @return a list with all the control elements.
 #'
-#' @details \code{rhos} is used to control the level of sparsity, i.e. the number of variables (or features) used in classifier. If a variable has
-#' no contribution to discrimination function, it should be removed from the model. By setting rhos within the interval [0, Inf], it is possible
-#' control the amount of variables that is removed from the model. As the upper bound of rhos decreases towards 0, fewer variables are removed.
-#' If rhos = 0, all variables are included in classifier.
+#' @details \code{rhos} is used to control the level of sparsity, i.e., the number of variables (or features) used in the classifier. If a variable has no contribution to the discrimination function, it should be removed from the model. By setting rhos within the interval [0, Inf], it is possible to control the number of variables that are removed from the model. As the upper bound of rhos decreases towards 0, fewer variables are removed. If \code{rhos = 0}, all variables are included in the classifier.
 #'
-#' \code{truephi} controls how Poisson model differs from Negative Binomial model. If overdispersion is zero, Negative Binomial model converges to
-#' Poisson model. Hence, the results from \code{\link{trainNBLDA}} is identical to PLDA results from \code{\link[PoiClaClu]{Classify}} when truephi = 0.
+#' \code{truephi} controls how the Poisson model differs from the Negative Binomial model. If overdispersion is zero, the Negative Binomial model converges to the Poisson model. Hence, the results from \code{\link{trainNBLDA}} are identical to PLDA results from \code{\link[PoiClaClu]{Classify}} when truephi = 0.
 #'
-#' \code{phi.epsilon} is a value used to shring estimated overdispersions towards 0. Poisson model assumes that there is no overdispersion in the
-#' observed counts. However, this is not a valid assumption in highly overdispersed count data. \code{NBLDA} performs a shrinkage on estimated
-#' overdispersions. Although the amount of shrinkage is dependent on several parameters such as \code{delta}, \code{target} and \code{truephi}, some
-#' of the shrinked overdispersions might be very close to 0. By defining a threshold value for shrinked overdispersions, it is possible to shrink
-#' very small overdispersions towards 0. If estimated overdispersion is below \code{phi.epsilon}, it is shrinked to 0. If \code{phi.epsilon} = NULL,
-#' threshold value is set to 0. Hence, all the variables with very small overdispersion are included in the NBLDA model.
+#' \code{phi.epsilon} is a value used to shrink estimated overdispersions towards 0. The Poisson model assumes that there is no overdispersion in the observed counts. However, this is not a valid assumption in highly overdispersed count data. \code{NBLDA} performs a shrinkage on estimated overdispersions. Although the amount of shrinkage is dependent on several parameters such as \code{delta}, \code{target}, and \code{truephi}, some of the shrunken overdispersions might be very close to 0. By defining a threshold value for shrunken overdispersions, it is possible to shrink very small overdispersions towards 0. If estimated overdispersion is below \code{phi.epsilon}, it is shrunken to 0. If \code{phi.epsilon} = NULL, threshold value is set to 0. Hence, all the variables with very small overdispersion are included in the NBLDA model.
 #'
 #' @author Dincer Goksuluk
 #'

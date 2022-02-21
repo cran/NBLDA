@@ -3,30 +3,29 @@
 \name{NullModel}
 \alias{NullModel}
 \alias{NullModelTest}
-\title{Calculate Normalized Counts and Related Training Parameters.}
+\title{Calculate the Normalized Counts and Related Training Parameters.}
 \usage{
 NullModel(x, type = c("mle", "deseq", "quantile", "none", "tmm"))
 
 NullModelTest(null.out, xte = NULL)
 }
 \arguments{
-\item{x}{a n-by-p data frame or matrix of count data. Samples should be in the rows.}
+\item{x}{an n-by-p data frame or matrix of count data. Samples should be in the rows.}
 
-\item{type}{normalization methods. See \code{\link{control}} for details.}
+\item{type}{the normalization method. See \code{\link{control}} for details.}
 
 \item{null.out}{an object returned from \code{\link{NullModel}}.}
 
-\item{xte}{a n-by-p count matrix or data frame of test set. These counts are normalized using training set parameters.}
+\item{xte}{an n-by-p count matrix or data frame of test set. These counts are normalized using the training set parameters.}
 }
 \value{
-a list with normalized counts and training set parameters used for normalizing raw counts.
+a list with the normalized counts and the training set parameters that are used for normalizing the raw counts.
 }
 \description{
-Fit training set to NBLDA model and estimate normalized counts. The related model parameters which are used
-while normalizing training sets are also returned in order to normalize test sets using training set parameters.
+Fit a training set to the NBLDA model and estimate normalized counts. The related model parameters, which are used while normalizing training sets, are also returned to normalize test sets using training set parameters.
 }
 \note{
-These functions are copied from \code{PoiClaClu} package and modified here to make "tmm" and "none" methods available.
+These functions are copied from the \code{PoiClaClu} package and modified here to make "tmm" and "none" methods available.
 }
 \examples{
 set.seed(2128)

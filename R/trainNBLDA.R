@@ -159,8 +159,10 @@ nblda <- function(x, y, xte = NULL, rhos = 0, beta = 1, type = c("mle", "deseq",
       selectedFeaturesIdx <- selectedFeaturesNames <- NULL
     }
 
-    save.i <- list(ns = ns, nste = nste, ds = ds, discriminant = discriminant, ytehat = uniq[apply(discriminant, 1, which.max)],
-                   alpha = alpha, rho = u, x = x, y = y, xte = xte, type = type, prior = prior, dispersions = disperhat.list,
+    save.i <- list(ns = ns, nste = nste, ds = ds, discriminant = discriminant,
+                   ytehat = uniq[apply(discriminant, 1, which.max)],
+                   alpha = alpha, rho = u, x = x, y = y, xte = xte, type = type,
+                   prior = prior, dispersions = disperhat.list,
                    transform = transform, trainParameters = null.out,
                    selectedFeatures = list(idx = selectedFeaturesIdx, names = selectedFeaturesNames))
     save.i
@@ -174,8 +176,7 @@ nblda <- function(x, y, xte = NULL, rhos = 0, beta = 1, type = c("mle", "deseq",
 
 #' @title Train Model over Different Tuning Parameters
 #'
-#' @description This function fits Negative Binomial classifier using various model parameters and finds the best model parameter
-#' using the resampling based performance measures.
+#' @description This function fits the Negative Binomial classifier using various model parameters and finds the best model parameter using the resampling based performance measures.
 #'
 #' @usage
 #' trainNBLDA(x, y, type = c("mle", "deseq", "quantile", "tmm"),
@@ -184,9 +185,9 @@ nblda <- function(x, y, xte = NULL, rhos = 0, beta = 1, type = c("mle", "deseq",
 #' @param x a n-by-p data frame or matrix. Samples should be in the rows and variables in the columns. Used to train the classifier.
 #' @param y a vector of length n. Each element corresponds to a class label of a sample. Integer and/or factor types are allowed.
 #' @param type a character string indicating the type of normalization method within the NBLDA model. See details.
-#' @param tuneLength a positive integer. This is the total number of levels to be used while tuning the model parameter(s).
-#' @param metric which criteria should be used while determining the best parameter? overall accuracu or avarage number of misclassified samples?
-#' @param train.control a list with control parameters to be used in NBLDA model. See \link{nbldaControl} for details.
+#' @param tuneLength a positive integer. This is the total number of levels to be used while tuning the model parameter(s) in grid search.
+#' @param metric which criteria should be used while determining the best model parameter? overall accuracy or average number of misclassified samples?
+#' @param train.control a list with control parameters to be used in the NBLDA model. See \link{nbldaControl} for details.
 #' @param ... further arguments. Deprecated.
 #'
 #' @return an \code{nblda} object with following slots:
@@ -194,31 +195,20 @@ nblda <- function(x, y, xte = NULL, rhos = 0, beta = 1, type = c("mle", "deseq",
 #' \item{result}{an \code{nblda_trained} object including the results from cross-validated and final models. See \code{\linkS4class{nblda_trained}} for details.}
 #' \item{call}{a call expression.}
 #'
-#' @details NBLDA is proposed to classify count data from any field, e.g. economics, social sciences, genomics, etc.
-#' In RNA-Seq studies, for example, normalization is used to adjust between-sample differences for downstream analysis.
-#' \code{type} is used to define normalization method. Available options are "mle", "deseq", "quantile" and "tmm".
-#' Since "deseq", "quantile" and "tmm" methods are originally proposed as robust methods to be used in RNA-Sequencing studies, one should
-#' carefully define normalization types. In greater details, "deseq" estimates the size factors by dividing each sample by the geometric means
-#' of the transcript counts (Anders and Huber, 2010). "tmm" trims the lower and upper side of the data by log fold changes to
-#' minimize the log-fold changes between the samples and by absolute intensity (Robinson and Oshlack, 2010). "quantile" is
-#' quantile normalization approach of Bullard et al (2010). "mle" (less robust) divides total counts of each sample to the grand total
-#' counts (Witten, 2010). See related papers for mathematical backgrounds.
+#' @details NBLDA is proposed to classify count data from any field, e.g., economics, social sciences, genomics, etc. In RNA-Seq studies, for example, normalization is used to adjust between-sample differences for downstream analysis. \code{type} is used to define normalization method. Available options are "mle", "deseq", "quantile", and "tmm". Since "deseq", "quantile", and "tmm" methods are originally proposed as robust methods to be used in RNA-Sequencing studies, one should carefully define normalization types. In greater detail, "deseq" estimates the size factors by dividing each sample by the geometric means of the transcript counts (Anders and Huber, 2010). "tmm" trims the lower and upper side of the data by log-fold changes to minimize the log-fold changes between the samples and by absolute intensity (Robinson and Oshlack, 2010). "quantile" is quantile normalization approach of Bullard et al. (2010). "mle" (less robust) divides total counts of each sample to the total counts (Witten, 2010). See related papers for mathematical backgrounds.
 #'
 #' @author Dincer Goksuluk
 #'
-#' @references Witten, DM (2011). Classification and clustering of sequencing data using a Poisson model.
-#' Ann. Appl. Stat. 5(4), 2493--2518. doi:10.1214/11-AOAS493.
+#' @references
+#' Witten, DM (2011). Classification and clustering of sequencing data using a Poisson model. Ann. Appl. Stat. 5(4), 2493--2518. doi:10.1214/11-AOAS493.
 #'
-#' Dong, K., Zhao, H., Tong, T., & Wan, X. (2016). NBLDA: negative binomial linear discriminant analysis for RNA-Seq data.
-#' BMC Bioinformatics, 17(1), 369. http://doi.org/10.1186/s12859-016-1208-1.
+#' Dong, K., Zhao, H., Tong, T., & Wan, X. (2016). NBLDA: negative binomial linear discriminant analysis for RNA-Seq data. BMC Bioinformatics, 17(1), 369. http://doi.org/10.1186/s12859-016-1208-1.
 #'
 #' Anders S. Huber W. (2010). Differential expression analysis for sequence count data. Genome Biology, 11:R106
 #'
-#' Witten D. et al. (2010) Ultra-high throughput sequencing-based small RNA discovery and discrete statistical biomarker analysis
-#' in a collection of cervical tumours and matched controls. BMC Biology, 8:58
+#' Witten D. et al. (2010) Ultra-high throughput sequencing-based small RNA discovery and discrete statistical biomarker analysis in a collection of cervical tumours and matched controls. BMC Biology, 8:58
 #'
-#' Robinson MD, Oshlack A (2010). A scaling normalization method for differential expression analysis of RNA-Seq data.
-#' Genome Biology, 11:R25, doi:10.1186/gb-2010-11-3-r25
+#' Robinson MD, Oshlack A (2010). A scaling normalization method for differential expression analysis of RNA-Seq data. Genome Biology, 11:R25, doi:10.1186/gb-2010-11-3-r25
 #'
 #' @examples
 #' set.seed(2128)

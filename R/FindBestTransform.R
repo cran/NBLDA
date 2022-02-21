@@ -1,13 +1,11 @@
 #' @title Find the Power Transformation Parameter.
 #'
-#' @description Use this function to find a constant value of alpha to be used for transforming count data.
-#' The power transformation parameter \code{alpha}, which approximately fits transformed data to Poisson log
-#' linear model, is selected using a grid search within the interval [0, 1].
+#' @description Use this function to find a constant value of alpha to be used for transforming count data. The power transformation parameter \code{alpha}, which approximately fits transformed data to the Poisson log-linear model, is selected using a grid search within the interval [0, 1].
 #'
-#' @param x a n-by-p data frame or matrix of count data. Samples should be in the rows.
+#' @param x an n-by-p data frame or matrix of count data. Samples should be in the rows.
 #' @param grid.length how many distinct points of alpha should be searched within the interval [0, 1]? Default is 50.
 #'
-#' @return the value of alpha to be use within power transformation.
+#' @return the value of alpha to be used within the power transformation.
 #'
 #' @author Dincer Goksuluk
 #'

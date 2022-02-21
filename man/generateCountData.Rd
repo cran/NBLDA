@@ -14,17 +14,15 @@ generateCountData(n, p, K, param, sdsignal = 1, DE = 0.3, allZero.rm = TRUE,
 
 \item{K}{number of classes.}
 
-\item{param}{overdispersion parameter. This parameter is matched with the arguement \code{size} in \code{\link[stats]{rnbinom}} function.
-Hence, Negative Binomial distribution aproximates to Poisson distribution as \code{param} increases.}
+\item{param}{overdispersion parameter. This parameter is matched with the argument \code{size} in the \code{\link[stats]{rnbinom}} function. Hence, the Negative Binomial distribution approximates to the Poisson distribution as \code{param} increases.}
 
 \item{sdsignal}{a nonzero numeric value. As \code{sdsignal} increases, the observed counts greatly differs among K classes.}
 
-\item{DE}{a numeric value within the interval [0, 1]. This is the proportion of total number of variables that is significantly
-different among K classes. The remaining part is assumed to be having no contribution to discrimination function.}
+\item{DE}{a numeric value within the interval [0, 1]. This is the proportion of total number of variables that is significantly different among K classes. The remaining part is assumed to be having no contribution to the discrimination function.}
 
-\item{allZero.rm}{a logical. If TRUE, columns having all zero cells are dropped.}
+\item{allZero.rm}{a logical. If TRUE, the columns having all zero cells are dropped.}
 
-\item{tag.samples}{a logical. If TRUE, rownames are automatically generated. A tag for each sample such as "S1", "S2", etc.}
+\item{tag.samples}{a logical. If TRUE, the row names are automatically generated using a tag for each sample such as "S1", "S2", etc.}
 }
 \value{
 \item{\code{x, xte}}{count data matrix for training and test set.}
@@ -32,7 +30,7 @@ different among K classes. The remaining part is assumed to be having no contrib
 \item{\code{truesf, truesfte}}{true size factors for training and test set. See Witten (2011) for more information on estimating size factors.}
 }
 \description{
-This function can be used to generate counts, e.g RNA-Sequencing data, for both classification and clustering purposes.
+This function can be used to generate counts, e.g., RNA-Sequencing data, for both the classification and clustering purposes.
 }
 \examples{
 set.seed(2128)

@@ -7,17 +7,15 @@
 FindBestTransform(x, grid.length = 50)
 }
 \arguments{
-\item{x}{a n-by-p data frame or matrix of count data. Samples should be in the rows.}
+\item{x}{an n-by-p data frame or matrix of count data. Samples should be in the rows.}
 
 \item{grid.length}{how many distinct points of alpha should be searched within the interval [0, 1]? Default is 50.}
 }
 \value{
-the value of alpha to be use within power transformation.
+the value of alpha to be used within the power transformation.
 }
 \description{
-Use this function to find a constant value of alpha to be used for transforming count data.
-The power transformation parameter \code{alpha}, which approximately fits transformed data to Poisson log
-linear model, is selected using a grid search within the interval [0, 1].
+Use this function to find a constant value of alpha to be used for transforming count data. The power transformation parameter \code{alpha}, which approximately fits transformed data to the Poisson log-linear model, is selected using a grid search within the interval [0, 1].
 }
 \note{
 This function is copied from \code{PoiClaClu} package and modified to control the total number of grid search.

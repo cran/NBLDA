@@ -1,15 +1,15 @@
 
 #' @title Extract predictions from NBLDA model
 #'
-#' @description  This function predicts the class labels of test data for a given model.
+#' @description  This function predicts the class labels of a test data for a given model.
 #'
-#' @param object a \code{nblda} object returned from \code{\link{trainNBLDA}}.
+#' @param object a \code{nblda} object returned from the \code{\link{trainNBLDA}}.
 #' @param test.data a data frame or matrix whose class labels to be predicted.
-#' @param return what should be returned? Predicted class labels or eveything?
+#' @param return what should be returned? Predicted class labels or everything?
 #' @param \dots further arguments to be passed to or from methods.
 #'
 #' @return It is possible to return only predicted class labels or a list with elements which are used within prediction
-#' process. These arguements are as follows:
+#' process. These arguments are as follows:
 #' \item{xte}{count data for test set.}
 #' \item{nste}{normalized count data for test set.}
 #' \item{ds}{estimates of offset parameter for each variable. See notes.}
